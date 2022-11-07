@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerEyes : MonoBehaviour
+public class LaserEyes : MonoBehaviour
 {
     public Animator characterAnimations;
-    public GameObject LazerBeam;
-    public Transform lazerOrigin;
+    public GameObject LaserBeam;
+    public Transform laserOrigin;
     
     
     void Update()
@@ -14,9 +14,9 @@ public class LazerEyes : MonoBehaviour
         if(Input.GetAxisRaw("Lazer") > 0.001)
         {
             characterAnimations.SetBool("Lazer", true);
-            LazerBeam.SetActive(true);
+            LaserBeam.SetActive(true);
             RaycastHit hit;
-            Ray faceLazer = new Ray(lazerOrigin.position, lazerOrigin.forward + new Vector3(0f, -0.1f, 0f));
+            Ray faceLazer = new Ray(laserOrigin.position, laserOrigin.forward + new Vector3(0f, -0.1f, 0f));
             Debug.DrawRay(faceLazer.origin, faceLazer.direction, Color.red, 1f, false);
             if (Physics.Raycast(faceLazer.origin, faceLazer.direction, out hit, 20f, LayerMask.GetMask("Destroyable"), QueryTriggerInteraction.Ignore))
             {
@@ -25,7 +25,7 @@ public class LazerEyes : MonoBehaviour
         }
         else
         {
-            LazerBeam.SetActive(false);
+            LaserBeam.SetActive(false);
             characterAnimations.SetBool("Lazer", false);
         }
     }

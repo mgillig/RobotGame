@@ -58,10 +58,10 @@ public class PlayerArmController : MonoBehaviour
     }
 
     //incomplete
-    public void Grab(GameObject grabbedObject)
+    public void Grab(GameObject grabbedObject, bool isRightFist)
     {
         //determine which arm is punching
-        bool isRightFist = false;
+        //bool isRightFist = false;
         
         //disables the collider of the grabbed object to prevent collision with the body of the player.  
         grabbedObject.GetComponent<BoxCollider>().enabled = false;
@@ -69,12 +69,12 @@ public class PlayerArmController : MonoBehaviour
         if (isRightFist)
         {
             grabR = true;
-            //grabbedObject.GetComponent</*grabbable*/>().grabTransform = GameObject.Find("Bone_R.002_end").transform;
+            //grabbedObject.GetComponent</*grabbable>().grabTransform = GameObject.Find("Bone_R.002_end").transform;
         }
         else
         {
             grabL = true;
-            //grabbedObject.GetComponent</*grabbable*/>().grabTransform = GameObject.Find("Bone_L.002_end").transform;
+            //grabbedObject.GetComponent</*grabbable>().grabTransform = GameObject.Find("Bone_L.002_end").transform;
         }
 
     }

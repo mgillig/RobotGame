@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Destruction : MonoBehaviour
 {
-    public bool isDestroyed = false;
+    
     public float punchStrength;
     public Rigidbody destructionPhysics;
     public Animator despawnAnimation;
-    public Transform grabTransform;
+    public bool grabbable = false;
 
 
     private float destructionCooldown = 2f;
+    private bool isDestroyed = false;
     
 
 
@@ -42,9 +43,19 @@ public class Destruction : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        Explosion(other.GetComponent<Rigidbody>().velocity, other.GetComponent<Transform>().position);
+        PlayerArmController grabber = other.GetComponentInParent<PlayerArmController>();
+        if(grabbable && grabber != null && grabber.isGrabbing) 
+        {
+            grabber.Grab(gameObject, other.CompareTag("Right"));
+        }
+        else
+        {
+            print("I AM NOT GRABBED");
+            Explosion(other.GetComponent<Rigidbody>().velocity, other.GetComponent<Transform>().position);
+        }
     }
 
+    //adds force to the rigid body of the GameObject based on the velocity and exact position of the fist at the moment of collision.  
     public void Explosion(Vector3 hitVelocity, Vector3 hitPosition)
     {
         Vector3 hitForce = new Vector3(hitVelocity.x * punchStrength, Mathf.Abs(hitVelocity.y) * (punchStrength / 2), hitVelocity.z * punchStrength);

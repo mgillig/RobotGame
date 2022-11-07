@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Smash : MonoBehaviour
 {
-    private bool isSmashed = false;
-
     private void OnTriggerEnter(Collider other)
     {
         transform.position -= new Vector3(0f, 5f, 0f);

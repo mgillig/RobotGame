@@ -26,7 +26,7 @@ public class RobotController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        freeLook.m_YAxis.Value = 0.5f;
+        //freeLook.m_YAxis.Value = 0.5f;
     }
 
     // Update is called once per frame
@@ -49,16 +49,19 @@ public class RobotController : MonoBehaviour
         
         
         //takes input for forward movement
-        float vertical = Input.GetAxisRaw("Vertical");
+        float verticalInput = Input.GetAxisRaw("Vertical");
         //just forward.  no backward.
-        if (vertical >= 0)
+        if (verticalInput > -0.1f)
         {
+            
             //stolen* from Brackeys
-            Vector3 direction = new Vector3(0f, 0f, vertical).normalized;
+            Vector3 direction = new Vector3(0f, 0f, verticalInput).normalized;
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+
             characterAnimations.SetBool("Walking", direction.magnitude >= 0.1f);
 
             if (direction.magnitude >= 0.1f)
@@ -68,29 +71,30 @@ public class RobotController : MonoBehaviour
             }
         }
 
-
         //triggers right punch on right click.
         if(Input.GetAxisRaw("RightPunch") > 0.001)
         {
-            if(grabR)
+            characterAnimations.SetTrigger("TrRightPunch");
+            /*if(grabR)
             {
 
             }
             else
             {
                 characterAnimations.SetTrigger("TrRightPunch");
-            }
+            }*/
         }
         else if(Input.GetAxisRaw("LeftPunch") > 0.001)
         {
-            if(grabL)
+            characterAnimations.SetTrigger("TrLeftPunch");
+            /*if(grabL)
             {
 
             }
             else
             {
                 characterAnimations.SetTrigger("TrLeftPunch");
-            }
+            }*/
         }
 
         //FaceLazer

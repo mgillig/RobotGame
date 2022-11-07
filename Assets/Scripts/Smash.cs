@@ -8,10 +8,6 @@ public class Smash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponentInParent<RobotController>().isSmashing)
-        {
-            transform.position -= new Vector3(0f, 5f, 0f);
-            print("I AM SMASHED");
-        }
+        transform.position -= new Vector3(0f, 5f, 0f);
     }
 }

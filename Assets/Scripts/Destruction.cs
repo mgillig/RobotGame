@@ -50,7 +50,6 @@ public class Destruction : MonoBehaviour
         }
         else
         {
-            print("I AM NOT GRABBED");
             Explosion(other.GetComponent<Rigidbody>().velocity, other.GetComponent<Transform>().position);
         }
     }

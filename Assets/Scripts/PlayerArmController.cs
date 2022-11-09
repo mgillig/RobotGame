@@ -32,7 +32,6 @@ public class PlayerArmController : MonoBehaviour
             }
             //if the player is not currently grabbing an object with the right arm the right punch animation will trigger
             //if isGrabbing is true the right arm will "grab" an object it collides with during the punch animation if that object is grabbable.
-                //see grabbable script (to be implemented later)
             else
             {
                 characterAnimations.SetTrigger("TrRightPunch");
@@ -49,7 +48,6 @@ public class PlayerArmController : MonoBehaviour
             }
             //if the player is not currently grabbing an object with the left arm the left punch animation will trigger
             //if isGrabbing is true the left arm will "grab" an object it collides with during the punch animation if that object is grabbable.
-                //see grabbable script (to be implemented later)
             else
             {
                 characterAnimations.SetTrigger("TrLeftPunch");
@@ -68,12 +66,12 @@ public class PlayerArmController : MonoBehaviour
 
         if (isRightFist)
         {
-            grabR = true;
+            //grabR = true;
             //grabbedObject.GetComponent</*grabbable>().grabTransform = GameObject.Find("Bone_R.002_end").transform;
         }
         else
         {
-            grabL = true;
+            //grabL = true;
             //grabbedObject.GetComponent</*grabbable>().grabTransform = GameObject.Find("Bone_L.002_end").transform;
         }
 

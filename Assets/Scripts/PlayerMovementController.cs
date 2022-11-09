@@ -43,8 +43,8 @@ public class PlayerMovementController : MonoBehaviour
     //PLAYER MOVENET
 
         //takes input for forward movement
+        //the code will not allow the player to move backwards
         float verticalInput = Input.GetAxisRaw("Vertical");
-        //prevents the player from moving in the negative direction (backwards)
 
         //player is always facing forward in relation to camera
         //camera is rotated using Input.GetAxisRaw("Horizontal").  See CM FreeLook1 object

@@ -20,7 +20,7 @@ public class Destruction : MonoBehaviour
     {
         //sets isDestroyed to true if the parent object is moved at a velocity of 2 or greater
         //Once isDestroyed is true it will never be false
-        if(!isDestroyed && destructionPhysics.velocity.magnitude >= 2f)
+        if(!isDestroyed && !grabbable && destructionPhysics.velocity.magnitude >= 2f)
         {
             isDestroyed = true;
         }

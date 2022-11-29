@@ -61,7 +61,6 @@ public class PlayerArmController : MonoBehaviour
             left.grab = true;
             grabbedObject.transform.SetParent(left.fistLocation);
         }
-
         grabbedObject.GetComponent<Collider>().attachedRigidbody.isKinematic = true;
         grabbedObject.GetComponent<Collider>().enabled = false;
         grabbedObject.GetComponent<Animator>().enabled = false;
